@@ -12,10 +12,49 @@ code {
     monospace;
 }
 
+.filter-container {
+  display: flex;
+  flex-direction: row;
+}
+  .filter-container h3 {
+    margin: 5px;
+  }
+
 table {
   border: 1px solid black;
+  border-collapse: collapse;
+}
+tbody tr:nth-child(odd) {
+  background: rgb(241, 241, 241);
+}
+table td, th {
+  border: 0.5px solid grey;
+  padding: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
 }
 table td {
-  border-top: 0.5px solid grey;
-  padding: 5px
+  text-align: right;
+}
+table th {
+  background-color: rgb(136, 199, 250);
+  width: 200px;
+  text-align: left;
+}
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+}
+
+
+button {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border: 0.5px solid grey;
+  border-bottom: none;
+  cursor: pointer;
+  outline: none;
 }
