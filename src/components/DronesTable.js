@@ -1,7 +1,6 @@
 import React from 'react'
 
 function DronesTable({drones}) {
-  console.log(drones);
   return (
     <table>
       <tbody>

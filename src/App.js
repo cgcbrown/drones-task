@@ -3,12 +3,62 @@ import DronesTable from './components/DronesTable';
 import Filter from './components/Filter';
 import './App.css';
 
-
+const filterOptions = [
+  {
+    id: 0,
+    name: "ALL",
+    value: {
+      min: 0,
+      max: 1
+    }
+  },
+  {
+    id: 1,
+    name: "0 - 20%",
+    value: {
+      min: 0,
+      max: 0.2
+    }
+  },
+  {
+    id: 2,
+    name: "20% - 40%",
+    value: {
+      min: 0.2,
+      max: 0.4
+    }
+  },
+  {
+    id: 3,
+    name: "40% - 60%",
+    value: {
+      min: 0.4,
+      max: 0.6
+    }
+  },
+  {
+    id: 4,
+    name: "60% - 80%",
+    value: {
+      min: 0.6,
+      max: 0.8
+    }
+  },
+  {
+    id: 5,
+    name: "80% - 100%",
+    value: {
+      min: 0.8,
+      max: 1
+    }
+  }
+]
 
 
 function App() {
   const [ drones, setDrones ] = useState([]);
   const [ dronesLoaded, setDronesLoaded ] = useState(false);
+  const [ displayedDrones, setDisplayedDrones ] = useState([])
 
   useEffect(() => {
     if (drones.length <= 0) {
@@ -25,7 +75,12 @@ function App() {
     })
     
     setDrones(newDrones);
+    setDisplayedDrones(newDrones);
     setDronesLoaded(true);
+  }
+
+  const handleFilter = ({min, max}) => {
+    return setDisplayedDrones(drones.filter((drone) => drone.crashRate >= min && drone.crashRate <= max))
   }
 
   const fetchDronesData = async () => {
@@ -53,8 +108,8 @@ function App() {
 
   return (
     <div className="container">
-      <DronesTable drones={drones} />
-      <Filter />
+      <DronesTable drones={displayedDrones} />
+      <Filter options={filterOptions} onSelect={(selectedValue) => handleFilter(selectedValue)} />
     </div>
   );
 }
