@@ -14,12 +14,14 @@ No other documentation is provided.
 
 ## Submission
 
-* Key assumptions made
-    in the table I have assumed that all of the data recieved from the API shares the same properties.
-    I have also assumed that the fetch request would eventually come back successful.
+#### Key assumptions made
+
+* In the table I have assumed that all of the data recieved from the API shares the same properties.
+* I have also assumed that the fetch request would eventually come back successful.
     
- * What technical compromises have I made
-    Not handling the errors on an individual basis. Instead opted to continuous retry the fetch request until successful which could be dangerous if something changes in the API causing it to not work at all. To solve this I would add a maximun amount of retries the fetch request can make before logging the most common issue.
+#### What technical compromises have I made
+
+Not handling the errors on an individual basis. Instead opted to continuous retry the fetch request until successful which could be dangerous if something changes in the API causing it to not work at all. To solve this I would add a maximun amount of retries the fetch request can make before logging the most common issue.
     
 To run the code, clone a copy of this repository into your terminal and in your terminal cd into the folder, then:
 1. npm init
